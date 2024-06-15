@@ -10,8 +10,6 @@ const moveScrollToBottom = () => {
     top: document.body.scrollHeight,
     behavior: "smooth",
   });
-  console.log("document.body.scrollHeight",document.body.scrollHeight);
-  
 };
 
 export { moveScrollToTop, moveScrollToBottom };
