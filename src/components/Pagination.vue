@@ -17,4 +17,7 @@ const currentPage = ref(props.page)
 watch(currentPage, (newPage) => {
     emit('update:page', newPage)
 })
+watch(props, (newProps) => {
+    currentPage.value = newProps.page;
+});
 </script>
