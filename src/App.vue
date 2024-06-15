@@ -21,17 +21,17 @@ import { Char } from "./contracts";
 import { baseUrl, pageParams, getRequest } from "./api";
 import { moveScrollToTop, moveScrollToBottom } from "./utils";
 
-const charSearchComponent = ref(null);
+const charSearchComponent = ref<{ selectedItem: string } | null>(null);
 const errorMessage = ref("");
 const chars = ref<Char[]>([]);
 const page = ref(1);
 const pagesLength = ref(1);
 const searchQuery = ref("");
 
-const updateSearchQuery = (query) => searchQuery.value = query;
-const updateErrorMessage = (message) => errorMessage.value = message;
+const updateSearchQuery = (query: string) => searchQuery.value = query;
+const updateErrorMessage = (message: string) => errorMessage.value = message;
 const cleanSearchParams = () => {
-  charSearchComponent.value.selectedItem = "";
+  if (charSearchComponent.value) charSearchComponent.value.selectedItem = "";
   searchQuery.value = "";
   page.value = 1;
 }

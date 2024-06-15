@@ -10,7 +10,6 @@ declare module 'vue' {
     Card: typeof import('./src/components/Card.vue')['default']
     CharSearch: typeof import('./src/components/CharSearch.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
-    NothingFound: typeof import('./src/components/NothingFound.vue')['default']
     Pagination: typeof import('./src/components/Pagination.vue')['default']
   }
 }
