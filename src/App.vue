@@ -4,13 +4,23 @@
     <CharSearch ref="charSearchComponent" @searchQueryUpdated="updateSearchQuery"
       @errorMessageUpdated="updateErrorMessage" :error-message="errorMessage" />
     <v-btn @click="cleanSearchParams" class="clean-up">Обнулить! :)</v-btn>
-    <v-main class="d-flex justify-center align-center">
-      <v-column class="gallery">
-        <v-btn @click="moveScrollToBottom" block variant="tonal">Вниз! :)</v-btn>
-        <Card v-for="char in chars" :char="char" :key="char.id" />
-        <v-btn @click="moveScrollToTop" block variant="tonal">Вверх! :)</v-btn>
-        <Pagination v-model:page="page" :length="pagesLength" />
-      </v-column>
+    <v-main>
+      <v-row class="cards">
+        <v-col cols="12">
+          <v-btn @click="moveScrollToBottom" block variant="tonal">Вниз! :)</v-btn>
+        </v-col>
+        <v-col class="cards" v-for="char in chars" :key="char.id" cols="12" md="6" lg="4">
+          <Card :char="char" />
+        </v-col>
+        <v-col cols="12">
+          <v-btn @click="moveScrollToTop" block variant="tonal">Вверх! :)</v-btn>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="12">
+          <Pagination v-model:page="page" :length="pagesLength" />
+        </v-col>
+      </v-row>
     </v-main>
   </v-app>
 </template>
@@ -61,13 +71,23 @@ watchEffect(fetchData);
   background-color: var(--main);
 }
 
-.gallery>* {
-  margin-bottom: 30px;
+.v-main {
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .clean-up {
   margin-bottom: 30px;
   background-color: white;
   color: var(--main);
+}
+
+@media (max-width: 1280px) {
+  .cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 </style>

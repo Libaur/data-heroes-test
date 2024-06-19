@@ -38,11 +38,12 @@ onMounted(async () => {
 <style scoped>
 .v-img {
     min-width: 230px;
+    max-width: 230px;
 }
 
 .v-card {
-    width: 600px;
-    height: 225px;
+    width: calc(100% - 10px);
+    min-height: 225px;
     border-radius: 10px;
     display: flex;
 }
@@ -70,5 +71,20 @@ p {
 
 .subtitle-content {
     color: white;
+}
+
+@media (max-width: 670px) {
+    .v-card {
+        flex-wrap: wrap;
+    }
+
+    .v-img {
+        order: 1;
+        max-width: 100%;
+    }
+
+    .v-card-text {
+        order: 2;
+    }
 }
 </style>
